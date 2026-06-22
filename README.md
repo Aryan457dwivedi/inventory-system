@@ -12,8 +12,8 @@ A production-ready full-stack inventory and order management system built with R
 | Backend | Python 3.12, FastAPI, SQLAlchemy |
 | Database | PostgreSQL 16 |
 | Containerization | Docker, Docker Compose |
-| Frontend Deploy | Vercel / Netlify |
-| Backend Deploy | Render / Railway |
+| Frontend Deploy | Vercel |
+| Backend Deploy | Railway |
 
 ---
 
@@ -114,25 +114,25 @@ Interactive API docs available at `/docs` (Swagger UI).
 
 ## Deployment
 
-### Backend → Render
+### Backend → Railway
 
 1. Push code to GitHub
-2. New Web Service on [render.com](https://render.com)
+2. New Web Service on [railway.com](https://railway.com)
 3. Root directory: `backend`
 4. Build command: `pip install -r requirements.txt`
 5. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-6. Add environment variable: `DATABASE_URL` (from Render's PostgreSQL add-on)
+6. Add environment variable: `DATABASE_URL` (from Railway's PostgreSQL add-on)
 
 **Or use Docker Hub image:**
 ```bash
 docker build -t yourusername/inventory-backend ./backend
 docker push yourusername/inventory-backend
 ```
-Set the image URL in Render's Docker deploy option.
+Set the image URL in Railway's Docker deploy option.
 
-### Database → Render PostgreSQL
+### Database → Railway PostgreSQL
 
-1. Create a Render PostgreSQL instance (free tier)
+1. Create a Railway PostgreSQL instance (free tier)
 2. Copy the `Internal Database URL`
 3. Set as `DATABASE_URL` env var in your backend service
 
@@ -150,10 +150,10 @@ Or connect your GitHub repo to Vercel and set:
 - Output directory: `build`
 - Environment variable: `REACT_APP_API_URL=https://your-backend.onrender.com`
 
-### Frontend → Netlify
+### Frontend → Vercel
 
 ```bash
-# netlify.toml
+# Vercel.toml
 [build]
   base = "frontend"
   command = "npm run build"
