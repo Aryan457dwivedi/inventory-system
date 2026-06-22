@@ -6,7 +6,7 @@ const EMPTY_FORM = { name: '', sku: '', price: '', quantity: '', description: ''
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [modal, setModal] = useState(null); // null | 'add' | 'edit'
+  const [modal, setModal] = useState(null);
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(EMPTY_FORM);
   const [submitting, setSubmitting] = useState(false);
@@ -88,6 +88,7 @@ export default function Products() {
     <div>
       <div className="page-header">
         <div>
+          <span className="eyebrow">Inventory Catalog</span>
           <h1 className="page-title">Products</h1>
           <p className="page-subtitle">{products.length} items in catalog</p>
         </div>
@@ -97,12 +98,15 @@ export default function Products() {
       {alert && <div className={`alert alert-${alert.type}`}>{alert.msg}</div>}
 
       {loading ? (
-        <div className="loading-state"><div className="spinner" /><span>Loading products...</span></div>
+        <div className="loading-state">
+          <div className="spinner" />
+          <span className="eyebrow">Loading products</span>
+        </div>
       ) : (
         <div className="table-wrap">
           <div className="table-header">
             <span className="table-title">Product Catalog</span>
-            <span className="text-muted" style={{ fontSize: 12 }}>{products.length} total</span>
+            <span className="eyebrow">{products.length} total</span>
           </div>
           {products.length === 0 ? (
             <div className="empty-state">
@@ -126,7 +130,7 @@ export default function Products() {
                   <tr key={p.id}>
                     <td className="td-primary">{p.name}</td>
                     <td><span className="sku-badge">{p.sku}</span></td>
-                    <td className="text-amber" style={{ fontWeight: 600 }}>${p.price.toFixed(2)}</td>
+                    <td style={{ fontWeight: 600, color: 'var(--primary)' }}>${p.price.toFixed(2)}</td>
                     <td>
                       <span className={p.quantity <= 5 ? 'stock-low' : 'stock-ok'}>
                         {p.quantity} {p.quantity <= 5 && '⚠'}
