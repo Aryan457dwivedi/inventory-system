@@ -20,7 +20,9 @@
   --red: #f5485c;
   --blue: #4a9eff;
 
-  --sidebar-w: 220px;
+  --sidebar-collapsed: 72px;
+  --sidebar-expanded: 220px;
+  --sidebar-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --radius: 8px;
   --radius-lg: 12px;
   --transition: 150ms ease;
@@ -44,8 +46,9 @@ body {
   min-height: 100vh;
 }
 
+/* ─── Sidebar: collapse / hover-expand ───────────────────────────────────── */
 .sidebar {
-  width: var(--sidebar-w);
+  width: var(--sidebar-collapsed);
   background: var(--bg-surface);
   border-right: 1px solid var(--border);
   display: flex;
@@ -53,57 +56,72 @@ body {
   position: fixed;
   top: 0; left: 0; bottom: 0;
   z-index: 100;
+  overflow: hidden;
+  transition: width 320ms var(--sidebar-ease);
+  will-change: width;
+}
+
+.sidebar:hover {
+  width: var(--sidebar-expanded);
+  box-shadow: 8px 0 32px rgba(0, 0, 0, 0.4);
 }
 
 .sidebar-brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 24px 20px 20px;
+  height: 76px;
+  padding: 0 24px;
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .brand-icon {
-  font-size: 22px;
+  font-size: 20px;
   color: var(--amber);
   line-height: 1;
+  flex-shrink: 0;
 }
 
+.brand-text { min-width: 0; }
+
 .brand-name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--text-primary);
+  white-space: nowrap;
 }
 
 .brand-sub {
   font-size: 10px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--text-muted);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .nav-list {
   list-style: none;
-  padding: 12px 10px;
+  padding: 16px 14px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
+  gap: 14px;
+  height: 42px;
+  padding: 0 14px;
   border-radius: var(--radius);
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
-  transition: all var(--transition);
-  letter-spacing: 0.01em;
+  transition: background var(--transition), color var(--transition);
 }
 
 .nav-link:hover {
@@ -119,18 +137,35 @@ body {
 
 .nav-icon {
   font-size: 14px;
-  width: 18px;
+  width: 19px;
+  min-width: 19px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 200ms var(--sidebar-ease) 60ms,
+              transform 200ms var(--sidebar-ease) 60ms;
+}
+
+.sidebar:hover .nav-label {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .sidebar-footer {
-  padding: 16px 20px;
+  padding: 16px 24px;
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 11px;
   color: var(--text-muted);
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .status-dot {
@@ -138,13 +173,39 @@ body {
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 6px var(--green);
+  flex-shrink: 0;
+}
+
+.footer-label {
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 200ms var(--sidebar-ease) 60ms,
+              transform 200ms var(--sidebar-ease) 60ms;
+}
+
+.sidebar:hover .footer-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* labels in brand block fade the same way */
+.sidebar:not(:hover) .brand-name,
+.sidebar:not(:hover) .brand-sub {
+  opacity: 0;
+}
+
+.brand-name, .brand-sub {
+  opacity: 1;
+  transition: opacity 200ms var(--sidebar-ease) 60ms;
 }
 
 .main-content {
-  margin-left: var(--sidebar-w);
+  margin-left: var(--sidebar-collapsed);
   flex: 1;
   padding: 32px;
-  max-width: calc(100vw - var(--sidebar-w));
+  max-width: calc(100vw - var(--sidebar-collapsed));
+  transition: margin-left 320ms var(--sidebar-ease);
 }
 
 /* ─── Page Header ────────────────────────────────────────────────────────────── */
@@ -476,7 +537,6 @@ tr:hover td {
   margin-bottom: 16px;
 }
 
-
 .form-label {
   display: block;
   font-size: 12px;
@@ -666,7 +726,7 @@ tr:hover td {
 
 /* ─── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  :root { --sidebar-w: 0px; }
+  :root { --sidebar-collapsed: 0px; }
 
   .sidebar {
     width: 100%;
@@ -676,10 +736,17 @@ tr:hover td {
     flex-wrap: wrap;
   }
 
+  .sidebar:hover { width: 100%; }
+
   .sidebar-brand { padding: 12px 16px; flex: 1; }
   .sidebar-footer { display: none; }
   .nav-list { flex-direction: row; padding: 8px 10px; flex: 0 0 100%; }
   .nav-link { padding: 7px 10px; font-size: 12px; }
+
+  .brand-name, .brand-sub, .nav-label {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
 
   .main-content {
     margin-left: 0;
