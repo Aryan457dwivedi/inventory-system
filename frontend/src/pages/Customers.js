@@ -72,6 +72,7 @@ export default function Customers() {
     <div>
       <div className="page-header">
         <div>
+          <span className="eyebrow">Customer Directory</span>
           <h1 className="page-title">Customers</h1>
           <p className="page-subtitle">{customers.length} registered customers</p>
         </div>
@@ -83,12 +84,15 @@ export default function Customers() {
       {alert && <div className={`alert alert-${alert.type}`}>{alert.msg}</div>}
 
       {loading ? (
-        <div className="loading-state"><div className="spinner" /><span>Loading customers...</span></div>
+        <div className="loading-state">
+          <div className="spinner" />
+          <span className="eyebrow">Loading customers</span>
+        </div>
       ) : (
         <div className="table-wrap">
           <div className="table-header">
             <span className="table-title">Customer Directory</span>
-            <span className="text-muted" style={{ fontSize: 12 }}>{customers.length} total</span>
+            <span className="eyebrow">{customers.length} total</span>
           </div>
           {customers.length === 0 ? (
             <div className="empty-state">
