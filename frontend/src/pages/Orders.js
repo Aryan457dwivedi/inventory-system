@@ -6,13 +6,12 @@ export default function Orders() {
   const [customers, setCustomers] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [modal, setModal] = useState(null); // null | 'create' | 'detail'
+  const [modal, setModal] = useState(null);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [alert, setAlert] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
-  // Order form state
   const [customerId, setCustomerId] = useState('');
   const [orderItems, setOrderItems] = useState([{ product_id: '', quantity: 1 }]);
   const [notes, setNotes] = useState('');
@@ -106,6 +105,7 @@ export default function Orders() {
     <div>
       <div className="page-header">
         <div>
+          <span className="eyebrow">Order History</span>
           <h1 className="page-title">Orders</h1>
           <p className="page-subtitle">{orders.length} orders total</p>
         </div>
@@ -115,7 +115,10 @@ export default function Orders() {
       {alert && <div className={`alert alert-${alert.type}`}>{alert.msg}</div>}
 
       {loading ? (
-        <div className="loading-state"><div className="spinner" /><span>Loading orders...</span></div>
+        <div className="loading-state">
+          <div className="spinner" />
+          <span className="eyebrow">Loading orders</span>
+        </div>
       ) : (
         <div className="table-wrap">
           <div className="table-header">
@@ -142,10 +145,12 @@ export default function Orders() {
               <tbody>
                 {orders.map(o => (
                   <tr key={o.id}>
-                    <td className="font-mono text-amber" style={{ fontSize: 12 }}>#{String(o.id).padStart(4, '0')}</td>
+                    <td className="font-mono" style={{ fontSize: 12, color: 'var(--primary)' }}>
+                      #{String(o.id).padStart(4, '0')}
+                    </td>
                     <td className="td-primary">{o.customer?.full_name || `Customer #${o.customer_id}`}</td>
                     <td className="text-muted">{o.items?.length || 0} item{o.items?.length !== 1 ? 's' : ''}</td>
-                    <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>${o.total_amount.toFixed(2)}</td>
+                    <td style={{ fontWeight: 600, color: 'var(--foreground)' }}>${o.total_amount.toFixed(2)}</td>
                     <td><span className={`badge badge-${o.status}`}>{o.status}</span></td>
                     <td className="text-muted" style={{ fontSize: 12 }}>
                       {o.created_at ? new Date(o.created_at).toLocaleDateString() : '—'}
@@ -169,7 +174,6 @@ export default function Orders() {
         </div>
       )}
 
-      {/* Create Order Modal */}
       {modal === 'create' && (
         <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setModal(null)}>
           <div className="modal" style={{ maxWidth: 600 }}>
@@ -225,7 +229,7 @@ export default function Orders() {
                   <div className="add-item-row">
                     <button className="btn btn-ghost btn-sm" onClick={addItem}>+ Add Product</button>
                     {orderItems.some(i => i.product_id) && (
-                      <span style={{ marginLeft: 'auto', color: 'var(--amber)', fontWeight: 600 }}>
+                      <span style={{ marginLeft: 'auto', color: 'var(--primary)', fontWeight: 600 }}>
                         Estimated: ${computeTotal().toFixed(2)}
                       </span>
                     )}
@@ -254,7 +258,6 @@ export default function Orders() {
         </div>
       )}
 
-      {/* Order Detail Modal */}
       {modal === 'detail' && selectedOrder && (
         <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setModal(null)}>
           <div className="modal" style={{ maxWidth: 560 }}>
@@ -278,7 +281,9 @@ export default function Orders() {
                 </div>
                 <div className="detail-field">
                   <div className="detail-field-label">Total Amount</div>
-                  <div className="detail-field-value text-amber">${selectedOrder.total_amount.toFixed(2)}</div>
+                  <div className="detail-field-value" style={{ color: 'var(--primary)' }}>
+                    ${selectedOrder.total_amount.toFixed(2)}
+                  </div>
                 </div>
                 <div className="detail-field">
                   <div className="detail-field-label">Created</div>
@@ -311,7 +316,7 @@ export default function Orders() {
                       <td><span className="sku-badge">{item.product?.sku || '—'}</span></td>
                       <td>{item.quantity}</td>
                       <td>${item.unit_price.toFixed(2)}</td>
-                      <td className="text-amber" style={{ fontWeight: 600 }}>
+                      <td style={{ fontWeight: 600, color: 'var(--primary)' }}>
                         ${(item.unit_price * item.quantity).toFixed(2)}
                       </td>
                     </tr>
