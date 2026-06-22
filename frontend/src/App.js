@@ -20,7 +20,7 @@ export default function App() {
         <nav className="sidebar">
           <div className="sidebar-brand">
             <span className="brand-icon">⬡</span>
-            <div>
+            <div className="brand-text">
               <div className="brand-name">NEXUS</div>
               <div className="brand-sub">Inventory OS</div>
             </div>
@@ -34,17 +34,16 @@ export default function App() {
                   className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 >
                   <span className="nav-icon">{item.icon}</span>
-                  <span>{item.label}</span>
+                  <span className="nav-label">{item.label}</span>
                 </NavLink>
               </li>
             ))}
           </ul>
           <div className="sidebar-footer">
             <div className="status-dot" />
-            <span>System online</span>
+            <span className="footer-label">System online</span>
           </div>
         </nav>
-
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Dashboard />} />
