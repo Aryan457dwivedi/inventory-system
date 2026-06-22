@@ -67,7 +67,7 @@ export default function App() {
 
           <div className="sidebar-footer">
             <span className="footer-dot" />
-            <span className="footer-label">System online</span>
+            <span className="footer-label">Connected</span>
           </div>
         </nav>
 
