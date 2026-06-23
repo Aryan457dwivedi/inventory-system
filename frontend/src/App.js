@@ -44,10 +44,10 @@ function LogoMark() {
 function LogoFull() {
   return (
     <svg width="140" height="44" viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="82" fontFamily="Helvetica, Arial, sans-serif" fontSize="54" fontWeight="500" fill="#1A1A1A">
+      <text x="0" y="88" fontFamily="Helvetica, Arial, sans-serif" fontSize="68" fontWeight="500" fill="#1A1A1A">
         nexus
       </text>
-      <text x="2" y="104" fontFamily="Helvetica, Arial, sans-serif" fontSize="13" letterSpacing="2.5" fill="#5F5E5A">
+      <text x="2" y="114" fontFamily="Helvetica, Arial, sans-serif" fontSize="17" letterSpacing="2.5" fill="#5F5E5A">
         inventory os
       </text>
     </svg>
