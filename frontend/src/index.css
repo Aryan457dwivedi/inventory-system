@@ -55,7 +55,7 @@ body {
   font-family: var(--font-sans);
   background: var(--background);
   color: var(--foreground);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -156,7 +156,7 @@ body {
   border-radius: var(--radius);
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   white-space: nowrap;
@@ -269,7 +269,7 @@ body {
 }
 
 .page-title {
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -294,7 +294,7 @@ body {
 }
 
 .dashboard-title {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--foreground);
@@ -358,7 +358,7 @@ body {
 .kpi-icon.amber  { background: var(--accent-subtle);  color: #b8860b;        }
 
 .kpi-value {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--foreground);
@@ -418,7 +418,7 @@ body {
 .health-row:hover { background: var(--silver); }
 
 .health-name {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--foreground);
 }
@@ -479,7 +479,7 @@ body {
 }
 
 .table-title {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--foreground);
   letter-spacing: -0.01em;
@@ -544,7 +544,7 @@ tr:hover td { background: #fafaf8; color: var(--foreground); }
   gap: 6px;
   padding: 8px 16px;
   border-radius: var(--radius);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   border: none;
@@ -634,7 +634,7 @@ tr:hover td { background: #fafaf8; color: var(--foreground); }
 }
 
 .modal-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--foreground);
   letter-spacing: -0.01em;
@@ -685,7 +685,7 @@ tr:hover td { background: #fafaf8; color: var(--foreground); }
   border-radius: var(--radius);
   padding: 9px 12px;
   color: var(--foreground);
-  font-size: 14px;
+  font-size: 15px;
   transition: border-color var(--transition), box-shadow var(--transition);
   outline: none;
   font-family: inherit;
@@ -793,7 +793,7 @@ tr:hover td { background: #fafaf8; color: var(--foreground); }
 }
 
 .detail-field-value {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--foreground);
   letter-spacing: -0.01em;
