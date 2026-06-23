@@ -40,23 +40,14 @@ function LogoMark() {
   );
 }
 
-// Expanded: full wordmark
+// Expanded: wordmark only (the node icon is already shown via LogoMark in the brand row)
 function LogoFull() {
   return (
     <svg width="140" height="44" viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
-      <g stroke="#0F6E56" fill="#0F6E56">
-        <line x1="20" y1="80" x2="20" y2="50" strokeWidth="5" strokeLinecap="round" />
-        <line x1="50" y1="80" x2="50" y2="50" strokeWidth="5" strokeLinecap="round" />
-        <line x1="20" y1="50" x2="50" y2="80" strokeWidth="5" strokeLinecap="round" />
-        <circle cx="20" cy="50" r="5.5" />
-        <circle cx="20" cy="80" r="5.5" />
-        <circle cx="50" cy="50" r="5.5" />
-        <circle cx="50" cy="80" r="5.5" />
-      </g>
-      <text x="68" y="76" fontFamily="Helvetica, Arial, sans-serif" fontSize="42" fontWeight="500" fill="#1A1A1A">
+      <text x="0" y="82" fontFamily="Helvetica, Arial, sans-serif" fontSize="54" fontWeight="500" fill="#1A1A1A">
         nexus
       </text>
-      <text x="69" y="98" fontFamily="Helvetica, Arial, sans-serif" fontSize="13" letterSpacing="2.5" fill="#5F5E5A">
+      <text x="2" y="104" fontFamily="Helvetica, Arial, sans-serif" fontSize="13" letterSpacing="2.5" fill="#5F5E5A">
         inventory os
       </text>
     </svg>
