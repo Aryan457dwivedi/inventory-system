@@ -28,7 +28,7 @@ const NAV_ITEMS = [
 // Collapsed: N-node mark only
 function LogoMark() {
   return (
-    <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="34" height="34" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="45" x2="15" y2="15" stroke="#0F6E56" strokeWidth="4.5" strokeLinecap="round"/>
       <line x1="45" y1="45" x2="45" y2="15" stroke="#0F6E56" strokeWidth="4.5" strokeLinecap="round"/>
       <line x1="15" y1="15" x2="45" y2="45" stroke="#0F6E56" strokeWidth="4.5" strokeLinecap="round"/>
