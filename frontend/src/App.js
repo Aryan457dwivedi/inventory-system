@@ -25,14 +25,36 @@ const NAV_ITEMS = [
   },
 ];
 
-// Logomark — visible in both collapsed and expanded states
-function Logomark({ size = 28 }) {
+// Collapsed state: just the N-node mark
+function LogoMark() {
   return (
-    <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
-      <rect width="28" height="28" rx="8" fill="var(--primary)" opacity="0.12"/>
-      <path d="M14 5L5 10v8l9 5 9-5v-8L14 5z" stroke="var(--primary)" strokeWidth="1.6" strokeLinejoin="round" fill="none"/>
-      <path d="M5 10l9 5 9-5" stroke="var(--primary)" strokeWidth="1.6" strokeLinejoin="round"/>
-      <line x1="14" y1="15" x2="14" y2="23" stroke="var(--primary)" strokeWidth="1.6"/>
+    <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="15" y1="45" x2="15" y2="15" stroke="#0F6E56" strokeWidth="4.5" strokeLinecap="round"/>
+      <line x1="45" y1="45" x2="45" y2="15" stroke="#0F6E56" strokeWidth="4.5" strokeLinecap="round"/>
+      <line x1="15" y1="15" x2="45" y2="45" stroke="#0F6E56" strokeWidth="4.5" strokeLinecap="round"/>
+      <circle cx="15" cy="15" r="5.5" fill="#0F6E56"/>
+      <circle cx="15" cy="45" r="5.5" fill="#0F6E56"/>
+      <circle cx="45" cy="15" r="5.5" fill="#0F6E56"/>
+      <circle cx="45" cy="45" r="5.5" fill="#0F6E56"/>
+    </svg>
+  );
+}
+
+// Expanded state: full wordmark
+function LogoFull() {
+  return (
+    <svg width="112" height="38" viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#0F6E56" fill="#0F6E56">
+        <line x1="20" y1="80" x2="20" y2="50" strokeWidth="5" strokeLinecap="round"/>
+        <line x1="50" y1="80" x2="50" y2="50" strokeWidth="5" strokeLinecap="round"/>
+        <line x1="20" y1="50" x2="50" y2="80" strokeWidth="5" strokeLinecap="round"/>
+        <circle cx="20" cy="50" r="5.5"/>
+        <circle cx="20" cy="80" r="5.5"/>
+        <circle cx="50" cy="50" r="5.5"/>
+        <circle cx="50" cy="80" r="5.5"/>
+      </g>
+      <text x="68" y="78" fontFamily="Helvetica, Arial, sans-serif" fontSize="34" fontWeight="500" fill="#1A1A1A">nexus</text>
+      <text x="69" y="96" fontFamily="Helvetica, Arial, sans-serif" fontSize="10" letterSpacing="2" fill="#5F5E5A">inventory os</text>
     </svg>
   );
 }
@@ -43,11 +65,8 @@ export default function App() {
       <div className="app">
         <nav className="sidebar">
           <div className="sidebar-brand">
-            <span className="brand-icon"><Logomark /></span>
-            <div className="brand-text">
-              <div className="brand-name">NEXUS</div>
-              <div className="brand-sub">Inventory OS</div>
-            </div>
+            <span className="brand-icon"><LogoMark /></span>
+            <div className="brand-text"><LogoFull /></div>
           </div>
 
           <ul className="nav-list">
