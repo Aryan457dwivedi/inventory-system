@@ -15,7 +15,12 @@ A production-ready full-stack inventory and order management system built with R
 | **API Docs (Swagger)** | https://inventory-system-production-8fc7.up.railway.app/docs |
 
 ---
+## Known Issues
 
+- The backend is deployed on Railway's free tier. Due to occasional regional/network restrictions and cold starts, the API and Swagger documentation may take a few seconds to respond or may be temporarily inaccessible from certain networks.
+- The frontend remains fully connected to the backend under normal operation.
+
+---
 ## Tech Stack
 
 | Layer | Technology | Choice |
