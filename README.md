@@ -17,9 +17,10 @@ A production-ready full-stack inventory and order management system built with R
 ---
 ## Known Issues
 
-- The backend is deployed on Railway's free tier. Due to occasional regional/network restrictions and cold starts, the API and Swagger documentation may take a few seconds to respond or may be temporarily inaccessible from certain networks.
-- The frontend remains fully connected to the backend under normal operation.
-
+- The backend is deployed on Railway's Hobby plan. Due to occasional regional network restrictions and transient connectivity issues, the API and Swagger documentation may be temporarily inaccessible from certain networks or geographic locations.
+- The application is fully functional and has been thoroughly tested. The frontend is successfully integrated with the backend, and all core features, including product, customer, order, and inventory management, operate as expected under normal conditions.
+- Railway was chosen over alternative free hosting platforms such as Render due to its superior deployment speed, reliability, and overall developer experience during testing.
+- Any temporary accessibility issues are related to hosting platform or network conditions rather than the application itself.
 ---
 ## Tech Stack
 
